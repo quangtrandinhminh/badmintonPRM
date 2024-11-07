@@ -18,14 +18,14 @@ public class SlotService(IServiceProvider serviceProvider)
     private readonly MapperlyMapper _mapper = serviceProvider.GetRequiredService<MapperlyMapper>();
     private readonly IUnitOfWork _unitOfWork = serviceProvider.GetRequiredService<IUnitOfWork>();
 
-    public IQueryable<Slot?> GetAll()
+    public IQueryable<Slot?> GetAll(int yardId)
     {
-        return _primaryRepository.GetAll();
+        return _primaryRepository.GetAllWithCondition(x => x.YardId == yardId && x.IsActive);
     }
 
     public async Task<Slot?> GetById(int id)
     {
-        var entity = await _primaryRepository.GetSingleAsync(x => x.Id == id, x => x.Yard);
+        var entity = await _primaryRepository.GetSingleAsync(x => x.Id == id && x.IsActive, x => x.Yard);
         if (entity == null)
         {
             throw new AppException(ResponseCodeConstants.NOT_FOUND, "Not found !",
@@ -52,7 +52,8 @@ public class SlotService(IServiceProvider serviceProvider)
     public async Task Delete(int id)
     {
         var entity = await GetById(id);
-        _primaryRepository.Delete(entity);
+        entity.IsActive = false;
+        _primaryRepository.Update(entity);
         await _unitOfWork.SaveChangeAsync();
     }
 }

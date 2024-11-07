@@ -12,7 +12,7 @@ using Repository.Infrastructure;
 namespace Repository.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20241107074412_InitDB")]
+    [Migration("20241107100107_InitDB")]
     partial class InitDB
     {
         /// <inheritdoc />
@@ -66,6 +66,9 @@ namespace Repository.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
 
+                    b.Property<double>("Price")
+                        .HasColumnType("double precision");
+
                     b.Property<TimeOnly>("StartTime")
                         .HasColumnType("time without time zone");
 
@@ -108,28 +111,28 @@ namespace Repository.Migrations
                         new
                         {
                             Id = 1,
-                            Password = "$2a$11$.KXzf2Xey/LI85lQ/j4ODO0kMrm818e4HgvwQPjAWfb.47y63.27S",
+                            Password = "$2a$11$kQTq9fpzpWBuCGiZSnjSHe7Mr6MSMGkCnY/1i6d9UYm1t2yKIvBzy",
                             Role = 1,
                             Username = "admin"
                         },
                         new
                         {
                             Id = 2,
-                            Password = "$2a$11$AQBHKh9VmKzCaX8pqj/7yuZ93jViEJsYJzj5qN53DbblwnASigST6",
+                            Password = "$2a$11$7azVhznE4PpBtnTYo5r0OOFgrng2nqD5EqRYXxcXjDBauYiOjg5xy",
                             Role = 2,
                             Username = "staff"
                         },
                         new
                         {
                             Id = 3,
-                            Password = "$2a$11$cSJwIoM8c7oz/.k2XE.gMO/bK3SmU2rvLfPo3knGZ7IZ6eJsRLPAK",
+                            Password = "$2a$11$iVxrAOTXTojM3LejyKWoa..tVtbHSMxomwvUgAkd4WAozx.bkSvaq",
                             Role = 3,
                             Username = "owner"
                         },
                         new
                         {
                             Id = 4,
-                            Password = "$2a$11$si7X/mMYL2KnqVcqXc52qebLzSRQw0s6ER8gxhQpO/t72qn9n3Bs6",
+                            Password = "$2a$11$mUv6nwdEsTqdtM/oqV0vPugu.0PaYMheiVuuaEej0UuH7sbXsoDUW",
                             Role = 4,
                             Username = "cus"
                         });
@@ -199,7 +202,7 @@ namespace Repository.Migrations
                         .HasForeignKey("BookingOrdersId");
 
                     b.HasOne("Repository.Models.Yard", "Yard")
-                        .WithMany()
+                        .WithMany("Slots")
                         .HasForeignKey("YardId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -219,6 +222,11 @@ namespace Repository.Migrations
                 });
 
             modelBuilder.Entity("Repository.Models.BookingOrders", b =>
+                {
+                    b.Navigation("Slots");
+                });
+
+            modelBuilder.Entity("Repository.Models.Yard", b =>
                 {
                     b.Navigation("Slots");
                 });

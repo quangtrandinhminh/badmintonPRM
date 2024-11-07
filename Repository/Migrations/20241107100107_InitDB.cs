@@ -84,6 +84,7 @@ namespace Repository.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     YardId = table.Column<int>(type: "integer", nullable: false),
+                    Price = table.Column<double>(type: "double precision", nullable: false),
                     StartTime = table.Column<TimeOnly>(type: "time without time zone", nullable: false),
                     EndTime = table.Column<TimeOnly>(type: "time without time zone", nullable: false),
                     IsActive = table.Column<bool>(type: "boolean", nullable: false),
@@ -110,10 +111,10 @@ namespace Repository.Migrations
                 columns: new[] { "Id", "Password", "Role", "Username" },
                 values: new object[,]
                 {
-                    { 1, "$2a$11$.KXzf2Xey/LI85lQ/j4ODO0kMrm818e4HgvwQPjAWfb.47y63.27S", 1, "admin" },
-                    { 2, "$2a$11$AQBHKh9VmKzCaX8pqj/7yuZ93jViEJsYJzj5qN53DbblwnASigST6", 2, "staff" },
-                    { 3, "$2a$11$cSJwIoM8c7oz/.k2XE.gMO/bK3SmU2rvLfPo3knGZ7IZ6eJsRLPAK", 3, "owner" },
-                    { 4, "$2a$11$si7X/mMYL2KnqVcqXc52qebLzSRQw0s6ER8gxhQpO/t72qn9n3Bs6", 4, "cus" }
+                    { 1, "$2a$11$kQTq9fpzpWBuCGiZSnjSHe7Mr6MSMGkCnY/1i6d9UYm1t2yKIvBzy", 1, "admin" },
+                    { 2, "$2a$11$7azVhznE4PpBtnTYo5r0OOFgrng2nqD5EqRYXxcXjDBauYiOjg5xy", 2, "staff" },
+                    { 3, "$2a$11$iVxrAOTXTojM3LejyKWoa..tVtbHSMxomwvUgAkd4WAozx.bkSvaq", 3, "owner" },
+                    { 4, "$2a$11$mUv6nwdEsTqdtM/oqV0vPugu.0PaYMheiVuuaEej0UuH7sbXsoDUW", 4, "cus" }
                 });
 
             migrationBuilder.CreateIndex(
