@@ -1,10 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Repository.Models;
 
 public class Slot
 {
-    public int Id { get; set; }
+    [Key]
+    public int SlotId { get; set; }
     public int YardId { get; set; }
     public double Price { get; set; }
     public TimeOnly StartTime { get; set; }
@@ -13,4 +15,5 @@ public class Slot
 
     [ForeignKey("YardId")]
     public virtual Yard Yard { get; set; } = null!;
+    public virtual ICollection<BookingOrders> BookingOrders { get; set; } = null!;
 }

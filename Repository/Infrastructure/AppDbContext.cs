@@ -27,28 +27,28 @@ public partial class AppDbContext : DbContext
         modelBuilder.Entity<User>().HasData(
             new User
             {
-                Id = 1,
+                UserId = 1,
                 Username = "admin",
                 Password = BCrypt.Net.BCrypt.HashPassword("123"),
                 Role = 1
             },
             new User
             {
-                Id = 2,
+                UserId = 2,
                 Username = "staff",
                 Password = BCrypt.Net.BCrypt.HashPassword("123"),
                 Role = 2
             },
             new User
             {
-                Id = 3,
+                UserId = 3,
                 Username = "owner",
                 Password = BCrypt.Net.BCrypt.HashPassword("123"),
                 Role = 3
             },
             new User
             {
-                Id = 4,
+                UserId = 4,
                 Username = "cus",
                 Password = BCrypt.Net.BCrypt.HashPassword("123"),
                 Role = 4

@@ -20,12 +20,14 @@ public class YardService(IServiceProvider serviceProvider)
 
     public IQueryable<Yard?> GetAll()
     {
-        return _primaryRepository.GetAll();
+        return _primaryRepository.GetAllWithCondition(x => x.IsActive);
     }
 
     public async Task<Yard?> GetById(int id)
     {
-        var entity = await _primaryRepository.GetSingleAsync(x => x.Id == id, x => x.Slots);
+        var entity = await _primaryRepository.GetSingleAsync(
+            x => x.YardId == id && x.IsActive, 
+            x => x.Slots);
         if (entity == null)
         {
             throw new AppException(ResponseCodeConstants.NOT_FOUND, "Not found !",
@@ -52,7 +54,8 @@ public class YardService(IServiceProvider serviceProvider)
     public async Task Delete(int id)
     {
         var entity = await GetById(id);
-        _primaryRepository.Delete(entity);
+        entity.IsActive = false;
+        _primaryRepository.Update(entity);
         await _unitOfWork.SaveChangeAsync();
     }
 }

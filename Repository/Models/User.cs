@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Repository.Models;
 
 public partial class User
 {
-    public int Id { get; set; }
+    [Key]
+    public int UserId { get; set; }
 
     public string Username { get; set; } = null!;
 

@@ -18,14 +18,28 @@ public class SlotService(IServiceProvider serviceProvider)
     private readonly MapperlyMapper _mapper = serviceProvider.GetRequiredService<MapperlyMapper>();
     private readonly IUnitOfWork _unitOfWork = serviceProvider.GetRequiredService<IUnitOfWork>();
 
-    public IQueryable<Slot?> GetAll(int yardId)
+
+    public IQueryable<Slot?> GetAll(int? yardId, DateOnly? bookingDate)
     {
-        return _primaryRepository.GetAllWithCondition(x => x.YardId == yardId && x.IsActive);
+        if (bookingDate != null)
+        {
+            // get all slots that don't have any booking order on the booking date
+            return _primaryRepository.GetAllWithCondition(
+                x => x.IsActive 
+                     && !x.BookingOrders.Any(y => y.BookingDate == bookingDate));
+        }
+
+        if (yardId != null)
+        {
+            return _primaryRepository.GetAllWithCondition(x => x.YardId == yardId && x.IsActive);
+        }
+
+        return _primaryRepository.GetAllWithCondition(x => x.IsActive);
     }
 
     public async Task<Slot?> GetById(int id)
     {
-        var entity = await _primaryRepository.GetSingleAsync(x => x.Id == id && x.IsActive, x => x.Yard);
+        var entity = await _primaryRepository.GetSingleAsync(x => x.SlotId == id && x.IsActive, x => x.Yard);
         if (entity == null)
         {
             throw new AppException(ResponseCodeConstants.NOT_FOUND, "Not found !",

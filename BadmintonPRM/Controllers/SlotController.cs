@@ -11,10 +11,10 @@ namespace BadmintonPRM.Controllers
     {
         private readonly SlotService _slotService = serviceProvider.GetRequiredService<SlotService>();
 
-        [HttpGet("yard/{yardId}")]
-        public IActionResult GetAllSlots(int yardId)
+        [HttpGet]
+        public IActionResult GetAllSlots([FromQuery] int? yardId, DateOnly? bookingDate)
         {
-            var slots = _slotService.GetAll(yardId);
+            var slots = _slotService.GetAll(yardId, bookingDate);
             return Ok(BaseResponse.OkResponseDto(slots));
         }
 

@@ -71,7 +71,7 @@ public class AuthService(IServiceProvider serviceProvider)
         var claims = new List<Claim>();
         claims.AddRange(new[]
         {
-            new Claim(ClaimTypes.Sid, loggedUser.Id.ToString()),
+            new Claim(ClaimTypes.Sid, loggedUser.UserId.ToString()),
             new Claim("UserName", loggedUser.Username ?? string.Empty),
             new Claim(ClaimTypes.Role, loggedUser.Role.ToString()),
             new Claim(ClaimTypes.Expired, DateTime.UtcNow.AddHours(24).ToString())

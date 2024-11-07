@@ -1,10 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Repository.Models;
 
 public class Yard
 {
-    public int Id { get; set; }
+    [Key]
+    public int YardId { get; set; }
     public string Name { get; set; } = null!;
     public string Address { get; set; } = null!;
     public int ProvinceId { get; set; }

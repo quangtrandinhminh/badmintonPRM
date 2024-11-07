@@ -22,4 +22,8 @@ public partial class MapperlyMapper
 
     public partial Slot Map(SlotRequest request);
     public partial void Map(SlotRequest request, Slot entity);
+    public partial ICollection<Slot> Map(IList<SlotRequest> request);
+
+    public partial BookingOrders Map(BookingOrderRequest request);
+    public partial void Map(BookingOrderRequest request, BookingOrders entity);
 }

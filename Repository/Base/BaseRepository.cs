@@ -2,6 +2,7 @@
 using Repository.Infrastructure;
 using System.Linq.Expressions;
 using Repository.Extensions;
+using System.Collections.Generic;
 
 namespace Repository.Base
 {
@@ -96,27 +97,40 @@ namespace Repository.Base
 
         public void Delete(T entity)
         {
+            TryAttach(entity);
             _dbSet.Remove(entity);
         }
 
-        protected void TryAttach(T entity)
+        public void TryAttach(T entity)
         {
-            if (_context.Entry(entity).State == EntityState.Detached)
+            try
             {
-                _dbSet.Attach(entity);
+                if (_context.Entry(entity).State == EntityState.Detached)
+                {
+                    _dbSet.Attach(entity);
+                }
+            }
+            catch
+            {
             }
         }
 
-        protected void TryAttachRange(ICollection<T> entities)
+        public void TryAttachRange(ICollection<T> entities)
         {
-            foreach (var entity in entities)
+            try
             {
-                if (_context.Entry(entity).State != EntityState.Detached)
+                foreach (var entity in entities)
                 {
-                    entities.Remove(entity);
+                    if (_context.Entry(entity).State != EntityState.Detached)
+                    {
+                        entities.Remove(entity);
+                    }
                 }
+                _dbSet.AttachRange(entities);
             }
-            _dbSet.AttachRange(entities);
+            catch
+            {
+            }
         }
     }
 }

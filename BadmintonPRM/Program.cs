@@ -88,6 +88,7 @@ builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<YardService>();
 builder.Services.AddScoped<SlotService>();
+builder.Services.AddScoped<BookingOrderService>();
 
 // Add authentication
 builder.Services.AddAuthentication(options =>
