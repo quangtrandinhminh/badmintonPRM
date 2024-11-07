@@ -1,0 +1,421 @@
+{
+	"info": {
+		"_postman_id": "484c6127-25c8-4b25-b6cb-a7cef3fc7ccc",
+		"name": "badminton",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29777760"
+	},
+	"item": [
+		{
+			"name": "login admin",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"admin\",\n  \"password\": \"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5074/api/v1/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5074",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"signin"
+					],
+					"query": [
+						{
+							"key": "quang",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login staff",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"staff\",\n  \"password\": \"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5074/api/v1/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5074",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"signin"
+					],
+					"query": [
+						{
+							"key": "quang",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login owner",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"owner\",\n  \"password\": \"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5074/api/v1/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5074",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"signin"
+					],
+					"query": [
+						{
+							"key": "quang",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login customer",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"cus\",\n  \"password\": \"123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5074/api/v1/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5074",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"signin"
+					],
+					"query": [
+						{
+							"key": "quang",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create yard",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"string\",\n  \"address\": \"string\",\n  \"provinceId\": 1,\n  \"openTime\": \"06:30:00\",\n  \"closeTime\": \"07:30:00\",\n  \"description\": \"string\",\n  \"image\": \"string\",\n  \"ownerId\": 2\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5074/api/v1/yards",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5074",
+					"path": [
+						"api",
+						"v1",
+						"yards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"password\": \"123\",\n  \"username\": \"quang1\",\n  \"role\": 4\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5074/api/v1/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5074",
+					"path": [
+						"api",
+						"v1",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create slot",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"yardId\": 1,\n  \"price\": 10000,\n  \"startTime\": \"18:00:00\",\n  \"endTime\": \"19:00:00\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5074/api/v1/slots",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5074",
+					"path": [
+						"api",
+						"v1",
+						"slots"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all slot by yard",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5074/api/v1/slots/yard/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5074",
+					"path": [
+						"api",
+						"v1",
+						"slots",
+						"yard",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all yard",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5074/api/v1/yards",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5074",
+					"path": [
+						"api",
+						"v1",
+						"yards"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "customer",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "admin",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "owner",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
