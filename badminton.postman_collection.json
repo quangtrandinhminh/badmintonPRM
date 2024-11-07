@@ -246,6 +246,44 @@
 			"response": []
 		},
 		{
+			"name": "Get all slot by yard",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5074/api/v1/slots?yardId=1&bookingDate=2024-11-08",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5074",
+					"path": [
+						"api",
+						"v1",
+						"slots"
+					],
+					"query": [
+						{
+							"key": "yardId",
+							"value": "1",
+							"description": "hiện các slot theo sân"
+						},
+						{
+							"key": "bookingDate",
+							"value": "2024-11-08",
+							"description": "hiện các slot khả dụng trong ngày này"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "register",
 			"request": {
 				"method": "POST",
@@ -325,34 +363,6 @@
 			"response": []
 		},
 		{
-			"name": "Get all slot by yard",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "accept",
-						"value": "*/*"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:5074/api/v1/slots/yard/1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "5074",
-					"path": [
-						"api",
-						"v1",
-						"slots",
-						"yard",
-						"1"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "get all yard",
 			"request": {
 				"method": "GET",
@@ -373,6 +383,104 @@
 						"api",
 						"v1",
 						"yards"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book an order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json-patch+json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"userId\": 4,\n  \"bookingDate\": \"2024-11-08\",\n  \"slotIds\": [\n    2\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5074/api/v1/bookingOrder",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5074",
+					"path": [
+						"api",
+						"v1",
+						"bookingOrder"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all order",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5074/api/v1/bookingOrder?customerId=4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5074",
+					"path": [
+						"api",
+						"v1",
+						"bookingOrder"
+					],
+					"query": [
+						{
+							"key": "customerId",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get order by id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "accept",
+						"value": "*/*"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5074/api/v1/bookingOrder/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5074",
+					"path": [
+						"api",
+						"v1",
+						"bookingOrder",
+						"1"
 					]
 				}
 			},
