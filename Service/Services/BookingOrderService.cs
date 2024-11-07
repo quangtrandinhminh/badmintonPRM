@@ -28,7 +28,7 @@ public class BookingOrderService(IServiceProvider serviceProvider)
     public async Task<BookingOrders?> GetById(int id)
     {
         var entity = await _bookingOrderRepository.GetSingleAsync(
-            x => x.BookingOrderId == id, x => x.User);
+            x => x.BookingOrderId == id, x => x.Slots);
         if (entity == null)
         {
             throw new AppException(ResponseCodeConstants.NOT_FOUND, "Not found !",
