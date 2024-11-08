@@ -38,14 +38,16 @@ public class BookingOrderService(IServiceProvider serviceProvider)
         return entity;
     }
 
-    public void Add(BookingOrderRequest request)
+    public BookingOrders Add(BookingOrderRequest request)
     {
         var slots = _slotRepository.GetAllWithCondition(x => request.SlotIds.Contains(x.SlotId)).ToList();
         var entity = _mapper.Map(request);
         entity.Slots = slots;
         _slotRepository.TryAttachRange(entity.Slots);
-        _bookingOrderRepository.Add(entity);
+        entity = _bookingOrderRepository.Add(entity);
         _unitOfWork.SaveChange();
+
+        return entity;
     }
 
     public async Task Update(int id, BookingOrderRequest request)

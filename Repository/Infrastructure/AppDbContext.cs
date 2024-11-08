@@ -97,7 +97,7 @@ public partial class AppDbContext : DbContext
         );
 
         // add slot data, 5 slot each yard, from 7:00 to 22:00
-        modelBuilder.Entity<Slot>().HasData(
+        /*modelBuilder.Entity<Slot>().HasData(
             new Slot
             {
                 SlotId = 1,
@@ -233,6 +233,6 @@ public partial class AppDbContext : DbContext
                 EndTime = new TimeOnly(12, 0),
                 IsActive = true
             }
-       );
+       );*/
     }
 }

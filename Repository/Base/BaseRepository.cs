@@ -84,9 +84,10 @@ namespace Repository.Base
             return await query.FirstOrDefaultAsync(predicate);
         }
 
-        public void Add(T entity)
+        public T Add(T entity)
         {
-            _dbSet.Add(entity);
+            entity = _dbSet.Add(entity).Entity;
+            return entity;
         }
 
         public void Update(T entity)

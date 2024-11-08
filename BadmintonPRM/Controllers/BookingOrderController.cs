@@ -28,8 +28,8 @@ namespace BadmintonPRM.Controllers
         [HttpPost]
         public IActionResult AddBookingOrder([FromBody] BookingOrderRequest request)
         {
-            _bookingOrderService.Add(request);
-            return Ok(BaseResponse.OkResponseDto("Success"));
+            var response = _bookingOrderService.Add(request);
+            return Ok(BaseResponse.OkResponseDto(response));
         }
 
         [HttpPut("{id}")]

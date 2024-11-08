@@ -11,7 +11,7 @@ public interface IBaseRepository<T> where T : class, new()
         params Expression<Func<T, object>>[] includeProperties);
     IQueryable<T> GetAllWithCondition(Expression<Func<T, bool>> predicate = null, params Expression<Func<T, object>>[] includeProperties);
     Task<T> GetSingleAsync(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includeProperties);
-    void Add(T entity);
+    T Add(T entity);
     void Delete(T entity);
     void Update(T entity);
     void TryAttachRange (ICollection<T> entities);

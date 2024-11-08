@@ -34,7 +34,7 @@ namespace Repository.Migrations
 
                     b.HasIndex("SlotsSlotId");
 
-                    b.ToTable("BookingOrdersSlot");
+                    b.ToTable("BookingOrdersSlot", (string)null);
                 });
 
             modelBuilder.Entity("Repository.Models.BookingOrders", b =>
@@ -58,7 +58,7 @@ namespace Repository.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("BookingOrders");
+                    b.ToTable("BookingOrders", (string)null);
                 });
 
             modelBuilder.Entity("Repository.Models.Slot", b =>
@@ -88,144 +88,7 @@ namespace Repository.Migrations
 
                     b.HasIndex("YardId");
 
-                    b.ToTable("Slots");
-
-                    b.HasData(
-                        new
-                        {
-                            SlotId = 1,
-                            EndTime = new TimeOnly(0, 0, 0),
-                            IsActive = true,
-                            Price = 100000.0,
-                            StartTime = new TimeOnly(0, 0, 0),
-                            YardId = 1
-                        },
-                        new
-                        {
-                            SlotId = 2,
-                            EndTime = new TimeOnly(0, 0, 0),
-                            IsActive = true,
-                            Price = 100000.0,
-                            StartTime = new TimeOnly(0, 0, 0),
-                            YardId = 1
-                        },
-                        new
-                        {
-                            SlotId = 3,
-                            EndTime = new TimeOnly(0, 0, 0),
-                            IsActive = true,
-                            Price = 100000.0,
-                            StartTime = new TimeOnly(0, 0, 0),
-                            YardId = 1
-                        },
-                        new
-                        {
-                            SlotId = 4,
-                            EndTime = new TimeOnly(0, 0, 0),
-                            IsActive = true,
-                            Price = 100000.0,
-                            StartTime = new TimeOnly(0, 0, 0),
-                            YardId = 1
-                        },
-                        new
-                        {
-                            SlotId = 5,
-                            EndTime = new TimeOnly(0, 0, 0),
-                            IsActive = true,
-                            Price = 100000.0,
-                            StartTime = new TimeOnly(0, 0, 0),
-                            YardId = 1
-                        },
-                        new
-                        {
-                            SlotId = 6,
-                            EndTime = new TimeOnly(0, 0, 0),
-                            IsActive = true,
-                            Price = 100000.0,
-                            StartTime = new TimeOnly(0, 0, 0),
-                            YardId = 2
-                        },
-                        new
-                        {
-                            SlotId = 7,
-                            EndTime = new TimeOnly(0, 0, 0),
-                            IsActive = true,
-                            Price = 100000.0,
-                            StartTime = new TimeOnly(0, 0, 0),
-                            YardId = 2
-                        },
-                        new
-                        {
-                            SlotId = 8,
-                            EndTime = new TimeOnly(0, 0, 0),
-                            IsActive = true,
-                            Price = 100000.0,
-                            StartTime = new TimeOnly(0, 0, 0),
-                            YardId = 2
-                        },
-                        new
-                        {
-                            SlotId = 9,
-                            EndTime = new TimeOnly(0, 0, 0),
-                            IsActive = true,
-                            Price = 100000.0,
-                            StartTime = new TimeOnly(0, 0, 0),
-                            YardId = 2
-                        },
-                        new
-                        {
-                            SlotId = 10,
-                            EndTime = new TimeOnly(0, 0, 0),
-                            IsActive = true,
-                            Price = 100000.0,
-                            StartTime = new TimeOnly(0, 0, 0),
-                            YardId = 2
-                        },
-                        new
-                        {
-                            SlotId = 11,
-                            EndTime = new TimeOnly(0, 0, 0),
-                            IsActive = true,
-                            Price = 100000.0,
-                            StartTime = new TimeOnly(0, 0, 0),
-                            YardId = 3
-                        },
-                        new
-                        {
-                            SlotId = 12,
-                            EndTime = new TimeOnly(0, 0, 0),
-                            IsActive = true,
-                            Price = 100000.0,
-                            StartTime = new TimeOnly(0, 0, 0),
-                            YardId = 3
-                        },
-                        new
-                        {
-                            SlotId = 13,
-                            EndTime = new TimeOnly(0, 0, 0),
-                            IsActive = true,
-                            Price = 100000.0,
-                            StartTime = new TimeOnly(0, 0, 0),
-                            YardId = 3
-                        },
-                        new
-                        {
-                            SlotId = 14,
-                            EndTime = new TimeOnly(0, 0, 0),
-                            IsActive = true,
-                            Price = 100000.0,
-                            StartTime = new TimeOnly(0, 0, 0),
-                            YardId = 3
-                        },
-                        new
-                        {
-                            SlotId = 15,
-                            EndTime = new TimeOnly(0, 0, 0),
-                            IsActive = true,
-                            Price = 100000.0,
-                            StartTime = new TimeOnly(0, 0, 0),
-                            YardId = 3
-                        });
+                    b.ToTable("Slots", (string)null);
                 });
 
             modelBuilder.Entity("Repository.Models.User", b =>
@@ -249,34 +112,34 @@ namespace Repository.Migrations
 
                     b.HasKey("UserId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
 
                     b.HasData(
                         new
                         {
                             UserId = 1,
-                            Password = "$2a$11$Y7MreXbBTN1M62isBRpb7euXD7Zo9UswuQQl0fSqKXHGgniZf3lOq",
+                            Password = "$2a$11$zlO4gMh/wf.cy5o5farxn.uvO7EtlBEcmhgE1KGY1fw98UvBJYwOS",
                             Role = 1,
                             Username = "admin"
                         },
                         new
                         {
                             UserId = 2,
-                            Password = "$2a$11$HQaANF/ibmy.avYSe8R9k.JxHhUWF90hJB6efNZPTthdIkygvMOby",
+                            Password = "$2a$11$70cVqqwW26T7NitMn/ezKu.3gefIiaQx1jAAWQGkPbwcusB5DBwIm",
                             Role = 2,
                             Username = "staff"
                         },
                         new
                         {
                             UserId = 3,
-                            Password = "$2a$11$l7MsLy8rb7IXyqR8.rT78.a3qenNV0iGnpUD2TUb96Is4VDmbA7qm",
+                            Password = "$2a$11$Jy1XWuMKX2aQKzXzlAv.A.B91md7we6R6T4ePiIxe5CzT5TR98NwW",
                             Role = 3,
                             Username = "owner"
                         },
                         new
                         {
                             UserId = 4,
-                            Password = "$2a$11$/WKCi/k7XHwP8xiL7qSoHuPjgqSvoLzoWxwQkmSCqFWhslEFX5S6a",
+                            Password = "$2a$11$M5KCwF7RyyOH2FGIF0Y9oeMLUZQm/68rubyua8LHFDFBcT1JpHXoO",
                             Role = 4,
                             Username = "cus"
                         });
@@ -318,7 +181,7 @@ namespace Repository.Migrations
 
                     b.HasIndex("OwnerId");
 
-                    b.ToTable("Yards");
+                    b.ToTable("Yards", (string)null);
 
                     b.HasData(
                         new
@@ -378,7 +241,7 @@ namespace Repository.Migrations
 
                     b.HasIndex("YardId");
 
-                    b.ToTable("YardImages");
+                    b.ToTable("YardImages", (string)null);
                 });
 
             modelBuilder.Entity("BookingOrdersSlot", b =>
