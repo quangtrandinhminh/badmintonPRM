@@ -19,10 +19,13 @@ public class BookingOrderService(IServiceProvider serviceProvider)
     private readonly MapperlyMapper _mapper = serviceProvider.GetRequiredService<MapperlyMapper>();
     private readonly IUnitOfWork _unitOfWork = serviceProvider.GetRequiredService<IUnitOfWork>();
     private readonly IBaseRepository<Slot> _slotRepository = serviceProvider.GetRequiredService<IBaseRepository<Slot>>();
+    private readonly IBaseRepository<Yard> _yardRepository = serviceProvider.GetRequiredService<IBaseRepository<Yard>>();
 
     public IQueryable<BookingOrders?> GetAll(int customerId)
     {
-        return _bookingOrderRepository.GetAllWithCondition(x => x.UserId == customerId && x.IsActive);
+        return _bookingOrderRepository.GetAllWithCondition(
+            x => x.UserId == customerId && x.IsActive,
+            x => x.Slots);
     }
 
     public async Task<BookingOrders?> GetById(int id)
