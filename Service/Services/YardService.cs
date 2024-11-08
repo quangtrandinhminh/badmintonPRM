@@ -18,11 +18,11 @@ public class YardService(IServiceProvider serviceProvider)
     private readonly MapperlyMapper _mapper = serviceProvider.GetRequiredService<MapperlyMapper>();
     private readonly IUnitOfWork _unitOfWork = serviceProvider.GetRequiredService<IUnitOfWork>();
 
-    public IQueryable<Yard?> GetAll(int pageNumber)
+    public IList<Yard?> GetAll(int pageNumber)
     {
         var pageSize = 5;
         return _primaryRepository.GetAllWithCondition(x => x.IsActive, includeProperties: x => x.YardImages
-        ).Skip((pageNumber - 1) * 10).Take(pageSize);
+        ).Skip((pageNumber - 1) * 10).Take(pageSize).ToList();
     }
 
     public async Task<Yard?> GetById(int id)
