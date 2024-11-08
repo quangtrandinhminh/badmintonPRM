@@ -44,6 +44,7 @@ public class BookingOrderService(IServiceProvider serviceProvider)
         var entity = _mapper.Map(request);
         entity.Slots = slots;
         _slotRepository.TryAttachRange(entity.Slots);
+        entity.Total = slots.Sum(x => x.Price);
         entity = _bookingOrderRepository.Add(entity);
         _unitOfWork.SaveChange();
 

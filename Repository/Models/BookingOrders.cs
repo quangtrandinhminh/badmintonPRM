@@ -9,6 +9,7 @@ public class BookingOrders
     public int BookingOrderId { get; set; }
     public int UserId { get; set; }
     public DateOnly BookingDate { get; set; }
+    public double Total { get; set; }
     public bool IsActive { get; set; } = true;
     public virtual ICollection<Slot> Slots { get; set; } = new List<Slot>();
 
