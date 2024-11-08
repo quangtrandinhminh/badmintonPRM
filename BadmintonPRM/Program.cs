@@ -89,6 +89,7 @@ builder.Services.AddScoped<AuthService>();
 builder.Services.AddScoped<YardService>();
 builder.Services.AddScoped<SlotService>();
 builder.Services.AddScoped<BookingOrderService>();
+builder.Services.AddScoped<YardImageService>();
 
 // Add authentication
 builder.Services.AddAuthentication(options =>

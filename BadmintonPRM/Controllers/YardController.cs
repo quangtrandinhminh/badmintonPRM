@@ -12,9 +12,9 @@ namespace BadmintonPRM.Controllers
         private readonly YardService _yardService = serviceProvider.GetRequiredService<YardService>();
 
         [HttpGet]
-        public IActionResult GetAllYards()
+        public IActionResult GetAllYards([FromQuery] int pageNumber = 1)
         {
-            var yards = _yardService.GetAll();
+            var yards = _yardService.GetAll(pageNumber);
             return Ok(BaseResponse.OkResponseDto(yards));
         }
 

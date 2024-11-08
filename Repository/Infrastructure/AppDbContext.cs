@@ -18,6 +18,7 @@ public partial class AppDbContext : DbContext
 
     public virtual DbSet<User> Users { get; set; }
     public virtual DbSet<Yard> Yards { get; set; }
+    public virtual DbSet<YardImage> YardImages { get; set; }
     public virtual DbSet<Slot> Slots { get; set; }
     public virtual DbSet<BookingOrders> BookingOrders { get; set; }
 
@@ -52,6 +53,46 @@ public partial class AppDbContext : DbContext
                 Username = "cus",
                 Password = BCrypt.Net.BCrypt.HashPassword("123"),
                 Role = 4
+            }
+        );
+
+        // add yard data
+        modelBuilder.Entity<Yard>().HasData(
+                       new Yard
+                       {
+                YardId = 1,
+                Name = "Yard 1",
+                Address = "123 Phan Văn Trị, Gò Vấp, Hồ Chí Minh",
+                ProvinceId = 1,
+                OpenTime = new TimeOnly(7, 0),
+                CloseTime = new TimeOnly(22, 0),
+                Description = "Sân bóng đẹp, sạch sẽ, thoáng đãng",
+                OwnerId = 3,
+                IsActive = true
+            },
+                                  new Yard
+                                  {
+                YardId = 2,
+                Name = "Yard 2",
+                Address = "124 Phan Văn Trị, Gò Vấp, Hồ Chí Minh",
+                ProvinceId = 1,
+                OpenTime = new TimeOnly(7, 0),
+                CloseTime = new TimeOnly(22, 0),
+                Description = "Sân bóng đẹp, sạch sẽ, thoáng đãng",
+                OwnerId = 3,
+                IsActive = true
+            },
+                                  new Yard
+                                  {
+                YardId = 3,
+                Name = "Yard 3",
+                Address = "123 Phan Văn Trị, Gò Vấp, Hồ Chí Minh",
+                ProvinceId = 1,
+                OpenTime = new TimeOnly(7, 0),
+                CloseTime = new TimeOnly(22, 0),
+                Description = "Sân bóng đẹp, sạch sẽ, thoáng đãng",
+                OwnerId = 3,
+                IsActive = true
             }
         );
     }

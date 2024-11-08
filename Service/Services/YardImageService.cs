@@ -10,26 +10,22 @@ using Service.Models;
 
 namespace Service.Services;
 
-public class YardService(IServiceProvider serviceProvider)
+public class YardImageService(IServiceProvider serviceProvider)
 {
-    private readonly IBaseRepository<Yard> _primaryRepository =
-        serviceProvider.GetRequiredService<IBaseRepository<Yard>>();
+    private readonly IBaseRepository<YardImage> _primaryRepository =
+        serviceProvider.GetRequiredService<IBaseRepository<YardImage>>();
 
     private readonly MapperlyMapper _mapper = serviceProvider.GetRequiredService<MapperlyMapper>();
     private readonly IUnitOfWork _unitOfWork = serviceProvider.GetRequiredService<IUnitOfWork>();
 
-    public IQueryable<Yard?> GetAll(int pageNumber)
+    public IQueryable<YardImage?> GetAll(int? yardId)
     {
-        var pageSize = 5;
-        return _primaryRepository.GetAllWithCondition(x => x.IsActive, includeProperties: x => x.YardImages
-        ).Skip((pageNumber - 1) * 10).Take(pageSize);
+        return _primaryRepository.GetAllWithCondition(x => yardId == null || x.YardId == yardId);
     }
 
-    public async Task<Yard?> GetById(int id)
+    public async Task<YardImage?> GetById(int id)
     {
-        var entity = await _primaryRepository.GetSingleAsync(
-            x => x.YardId == id && x.IsActive, 
-            x => x.Slots, x => x.YardImages);
+        var entity = await _primaryRepository.GetSingleAsync(x => x.YardImageId == id, x => x.Yard);
         if (entity == null)
         {
             throw new AppException(ResponseCodeConstants.NOT_FOUND, "Not found !",
@@ -39,13 +35,13 @@ public class YardService(IServiceProvider serviceProvider)
         return entity;
     }
 
-    public void Add(YardRequest request)
+    public void Add(YardImageRequest request)
     {
         _primaryRepository.Add(_mapper.Map(request));
         _unitOfWork.SaveChange();
     }
 
-    public async Task Update(int id, YardRequest request)
+    public async Task Update(int id, YardImageRequest request)
     {
         var entity = await GetById(id);
         _mapper.Map(request, entity);
@@ -56,8 +52,7 @@ public class YardService(IServiceProvider serviceProvider)
     public async Task Delete(int id)
     {
         var entity = await GetById(id);
-        entity.IsActive = false;
-        _primaryRepository.Update(entity);
+        _primaryRepository.Delete(entity);
         await _unitOfWork.SaveChangeAsync();
     }
 }

@@ -26,4 +26,7 @@ public partial class MapperlyMapper
 
     public partial BookingOrders Map(BookingOrderRequest request);
     public partial void Map(BookingOrderRequest request, BookingOrders entity);
+
+    public partial YardImage Map(YardImageRequest request);
+    public partial void Map(YardImageRequest request, YardImage entity);
 }
